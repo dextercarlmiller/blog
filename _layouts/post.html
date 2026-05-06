@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div class="container">
+    <header class="post-header">
+      <div class="post-header-meta">
+        <a href="{{ '/' | relative_url }}" class="back-link">&larr; All Posts</a>
+        <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %-d, %Y" }}
+        </time>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="post-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      <div class="post-divider"></div>
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <footer class="post-footer">
+      {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="post-nav">
+        {% if page.previous %}
+          <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-prev">
+            <span class="post-nav-label">&larr; Previous</span>
+            <span class="post-nav-title">{{ page.previous.title }}</span>
+          </a>
+        {% endif %}
+        {% if page.next %}
+          <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
+            <span class="post-nav-label">Next &rarr;</span>
+            <span class="post-nav-title">{{ page.next.title }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </footer>
+  </div>
+</article>

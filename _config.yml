@@ -1,0 +1,57 @@
+title: Dexter Miller
+tagline: "Builder. Developer. Fort Wayne."
+description: >-
+  I'm a web developer and entrepreneur from Fort Wayne, Indiana.
+  Building digital products for local businesses and beyond — one project at a time.
+author:
+  name: Dexter Miller
+  location: Fort Wayne, IN
+  github: dextercarlmiller
+
+url: "https://blog.dextermiller.com"
+baseurl: ""
+
+email: ""
+twitter_username: ""
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Pagination
+paginate: 8
+paginate_path: "/page:num/"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Dexter Miller"
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
