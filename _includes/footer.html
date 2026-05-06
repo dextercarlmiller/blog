@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-tagline">{{ site.tagline }}</p>
+        <p class="footer-copy">&copy; {{ site.time | date: "%Y" }} Dexter Miller &mdash; Fort Wayne, IN</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/{{ site.author.github }}" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="{{ '/feed.xml' | relative_url }}" class="footer-link">RSS</a>
+      </div>
+    </div>
+  </div>
+</footer>

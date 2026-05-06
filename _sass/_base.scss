@@ -1,0 +1,129 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $color-text-body;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-accent-hover;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  color: $color-text;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin-bottom: 1.5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  background: $color-surface;
+  color: $color-accent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid $color-border;
+}
+
+pre {
+  background: $color-text;
+  color: #e2e8f0;
+  padding: $space-lg;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+  font-size: 0.875rem;
+  line-height: 1.6;
+
+  code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+blockquote {
+  border-left: 3px solid $color-accent;
+  padding: $space-sm $space-lg;
+  margin: $space-lg 0;
+  color: $color-text-muted;
+  font-style: italic;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $color-border;
+  margin: $space-xl 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+
+  li {
+    margin-bottom: 0.4em;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  font-size: 0.9rem;
+
+  th {
+    font-family: $font-heading;
+    font-weight: 600;
+    text-align: left;
+    padding: $space-sm $space-md;
+    background: $color-surface;
+    border-bottom: 2px solid $color-border;
+  }
+
+  td {
+    padding: $space-sm $space-md;
+    border-bottom: 1px solid $color-border-light;
+  }
+}
