@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: about
 title: About
 permalink: /about/
 ---
@@ -23,10 +23,6 @@ Beyond client work, I'm building my own products — because there's something d
 - **FitQuest** — A fitness app for people serious about their goals.
 - **Fort Wayne Businesses** — A directory connecting locals with the best businesses in the city.
 - **Fort Wayne Web Studio** — Building websites for every Fort Wayne business in need.
-
-## Stack
-
-I work primarily with **TypeScript**, **HTML/CSS**, and whatever tool solves the problem best. I have a computer science background (shoutout to the AVL tree grind) and like to understand what's happening under the hood.
 
 ## This Blog
 
