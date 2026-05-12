@@ -17,7 +17,7 @@ I never really thought about this before. I'd just kind of start building. But t
 
 ## Colors Are Not Random (Who Knew)
 
-Okay, this one kind of blew my mind a little. Colors actually mean things. Not in a mystical way, but in a psychological way — people have consistent emotional responses to colors, and that's been studied and documented. Blues feel trustworthy and calm. Reds feel urgent and energetic. Greens feel natural and healthy. Warm oranges and yellows feel friendly and approachable.
+Colors actually mean things. Not in a mystical way, but in a psychological way — people have consistent emotional responses to colors, and that's been studied and documented. Blues feel trustworthy and calm. Reds feel urgent and energetic. Greens feel natural and healthy. Warm oranges and yellows feel friendly and approachable.
 
 So if you've done your discovery questions and you know a company is all about energy and intensity — like that CrossFit gym — then bold reds, oranges, and blacks actually make sense. They reinforce the brand personality. But if someone runs a wellness studio focused on calm and healing, you'd lean toward soft greens and muted blues. The colors aren't decoration. They're communication.
 
@@ -27,12 +27,12 @@ I'd always kind of picked colors based on what I liked or what seemed okay. Turn
 
 This is where Material Design comes in. Once you know who a company is and what colors and tone match their identity, Material Design gives you the system to apply it all consistently. It has pre-built components — buttons, cards, navigation elements — and rules for spacing, typography, and layout. You customize it with the brand's colors and fonts, and suddenly everything looks intentional and cohesive instead of just… thrown together.
 
-I think of it kind of like a recipe framework. Material Design is the base recipe. The brand identity is the flavor profile. And the design system you create for that specific client is the written-out recipe so every page tastes consistent.
+Think of it kind of like a recipe framework. Material Design is the base recipe. The brand identity is the flavor profile. And the design system you create for that specific client is the written-out recipe so every page tastes consistent.
 
 ## I Still Have a Lot to Learn
 
 I'm not going to pretend I've got this figured out. Honestly, this is all still pretty new territory for me, and I know the best way to actually learn it is to just do it — pick a client, go through the discovery questions for real, make some choices, and build something. See what works and what doesn't.
 
-But I feel like I finally have a starting point that makes sense. Instead of staring at a blank canvas wondering why it looks bad, I now have a process: understand the company, translate their identity into visual choices, apply a consistent system. It's not magic — it's just a workflow I didn't know existed.
+But I feel like I finally have a starting point that makes sense. Instead of staring at a blank canvas wondering why it looks bad, I now have a process: understand the company, translate their identity into visual choices, apply a consistent system. It's not magic — it's just a workflow that takes some time.
 
 More to come as I experiment. Hopefully the next site I build looks a lot better than the last one.
