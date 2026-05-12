@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "'Step Into Wonder, Stand in Awe' — A Sunday Morning at First Assembly"
+title: "'Step Into Wonder, Stand in Awe'"
+subtitle: "A First Assembly sermon by Rhonda Haslett"
 date: 2026-05-10
 categories: faith
 ---
 
-The sanctuary at First Assembly was still settling into its Sunday morning rhythm when the pastor walked to the front with something unusual in hand — small sachets of candy, one for every woman in the room.
+The sanctuary at First Assembly was still settling into its Sunday morning rhythm when the pastor Rhonda Haslett walked to the front with something unusual in hand — small sachets of candy, one for every woman in the room.
 
 "Even if you're not a mom," she said, "these are for you."
 
