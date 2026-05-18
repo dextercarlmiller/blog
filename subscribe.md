@@ -8,9 +8,8 @@ permalink: /subscribe/
 
 <p style="font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 32px;">I write about building software, growing in faith, and chasing fitness goals — the things I keep coming back to. If any of that resonates, drop your email below and I'll send a note whenever a new post goes up.</p>
 
-<!-- Replace YOUR_USERNAME_HERE with your Buttondown username (buttondown.com) -->
 <form
-  action="https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME_HERE"
+  action="https://buttondown.com/api/emails/embed-subscribe/dextercarlmiller"
   method="post"
   style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;"
 >
