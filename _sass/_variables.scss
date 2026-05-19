@@ -1,18 +1,18 @@
-// Colors
-$color-bg:            #ffffff;
-$color-surface:       #f8fafc;
-$color-surface-hover: #f1f5f9;
-$color-text:          #0f172a;
-$color-text-body:     #334155;
-$color-text-muted:    #64748b;
-$color-text-faint:    #94a3b8;
-$color-accent:        #2563eb;
-$color-accent-hover:  #1d4ed8;
-$color-accent-light:  #eff6ff;
-$color-border:        #e2e8f0;
-$color-border-light:  #f1f5f9;
-$color-tag-bg:        #f0f9ff;
-$color-tag-text:      #0369a1;
+// Colors - dark theme (#0d1117 base)
+$color-bg:            #0d1117;
+$color-surface:       #161b22;
+$color-surface-hover: #1c2128;
+$color-text:          #e6edf3;
+$color-text-body:     #c9d1d9;
+$color-text-muted:    #8b949e;
+$color-text-faint:    #6e7681;
+$color-accent:        #58a6ff;
+$color-accent-hover:  #79c0ff;
+$color-accent-light:  rgba(88, 166, 255, 0.12);
+$color-border:        #30363d;
+$color-border-light:  #21262d;
+$color-tag-bg:        rgba(56, 139, 253, 0.15);
+$color-tag-text:      #79c0ff;
 
 // Typography
 $font-heading:  'Space Grotesk', system-ui, sans-serif;

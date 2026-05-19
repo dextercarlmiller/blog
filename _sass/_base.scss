@@ -62,8 +62,9 @@ code {
 }
 
 pre {
-  background: $color-text;
-  color: #e2e8f0;
+  background: $color-surface;
+  color: #e6edf3;
+  border: 1px solid $color-border;
   padding: $space-lg;
   border-radius: 8px;
   overflow-x: auto;

@@ -5,7 +5,7 @@
   padding: 0 $space-lg;
 }
 
-// ─── Header ──────────────────────────────────────────────────────────────────
+// --------- Header ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .site-header {
   position: sticky;
@@ -36,18 +36,21 @@
 
   &:hover {
     color: $color-text;
+    opacity: 0.85;
   }
+}
 
-  &:hover .logo-mark {
-    background: $color-accent;
-  }
+.logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
 }
 
 .logo-mark {
   width: 32px;
   height: 32px;
-  background: $color-text;
-  color: #fff;
+  background: $color-accent;
+  color: #0d1117;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -90,15 +93,24 @@
   &.active {
     color: $color-accent;
   }
+
+  &.nav-link-external {
+    color: $color-text-faint;
+    font-size: 0.85rem;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
 }
 
-// ─── Main ────────────────────────────────────────────────────────────────────
+// --------- Main ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .site-main {
   min-height: calc(100vh - #{$header-height} - 120px);
 }
 
-// ─── Hero ────────────────────────────────────────────────────────────────────
+// --------- Hero ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .hero {
   padding: $space-3xl 0 $space-2xl;
@@ -131,7 +143,7 @@
   margin-bottom: 0;
 }
 
-// ─── Posts Section ───────────────────────────────────────────────────────────
+// --------- Posts Section ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .posts-section {
   padding: $space-2xl 0;
@@ -146,24 +158,85 @@
   margin-bottom: $space-xl;
 }
 
-// ─── Post Cards ──────────────────────────────────────────────────────────────
+// --------- Search Bar ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.search-wrap {
+  margin-bottom: $space-lg;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  transition: border-color $transition;
+  outline: none;
+
+  &::placeholder {
+    color: $color-text-faint;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+  }
+}
+
+// --------- Tag Filter ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-bottom: $space-xl;
+}
+
+.tag-filter-btn {
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid $color-border;
+  background: transparent;
+  color: $color-text-muted;
+  font-family: $font-body;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color $transition, color $transition, background $transition;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &.active {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #0d1117;
+    font-weight: 600;
+  }
+}
+
+// --------- Post Cards ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: $space-md;
 }
 
 .post-card {
-  padding: $space-xl 0;
-  border-bottom: 1px solid $color-border-light;
+  padding: $space-lg;
+  background: $color-surface;
+  border: 1px solid $color-border-light;
+  border-radius: 10px;
+  transition: border-color $transition, background $transition;
 
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    border-bottom: none;
+  &:hover {
+    border-color: $color-border;
+    background: $color-surface-hover;
   }
 }
 
@@ -194,7 +267,7 @@
 }
 
 .post-card-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: $space-sm;
 
@@ -227,7 +300,13 @@
   }
 }
 
-// ─── Pagination ──────────────────────────────────────────────────────────────
+.no-results {
+  color: $color-text-muted;
+  font-style: italic;
+  padding: $space-xl 0;
+}
+
+// --------- Pagination ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .pagination {
   display: flex;
@@ -248,7 +327,7 @@
   color: $color-text-faint;
 }
 
-// ─── Post Layout ─────────────────────────────────────────────────────────────
+// --------- Post Layout ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post {
   padding: $space-2xl 0 $space-3xl;
@@ -299,7 +378,7 @@
   margin-top: $space-xl;
 }
 
-// ─── Post Content ────────────────────────────────────────────────────────────
+// --------- Post Content ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post-content {
   font-size: 1.05rem;
@@ -350,7 +429,41 @@
   }
 }
 
-// ─── Post Footer ─────────────────────────────────────────────────────────────
+// --------- Subscribe CTA (post footer) ---------------------------------------------------------------------------------------------------------------------------------------
+
+.post-subscribe-cta {
+  margin-top: $space-2xl;
+  padding: $space-xl;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  text-align: center;
+
+  p {
+    font-size: 0.95rem;
+    color: $color-text-muted;
+    margin-bottom: $space-md;
+  }
+
+  a {
+    display: inline-block;
+    padding: 9px 22px;
+    background: $color-accent;
+    color: #0d1117;
+    border-radius: 6px;
+    font-family: $font-heading;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background $transition;
+
+    &:hover {
+      background: $color-accent-hover;
+    }
+  }
+}
+
+// --------- Post Footer ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post-footer {
   margin-top: $space-3xl;
@@ -378,12 +491,13 @@
   padding: $space-md;
   border: 1px solid $color-border;
   border-radius: 8px;
+  background: $color-surface;
   text-decoration: none;
   transition: border-color $transition, background $transition;
 
   &:hover {
     border-color: $color-accent;
-    background: $color-accent-light;
+    background: $color-surface-hover;
   }
 }
 
@@ -407,12 +521,13 @@
   line-height: 1.3;
 }
 
-// ─── Post Reactions ───────────────────────────────────────────────────────────
+// --------- Post Reactions ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post-reactions {
   margin-top: $space-2xl;
   padding: $space-xl;
   background: $color-surface;
+  border: 1px solid $color-border-light;
   border-radius: 12px;
   text-align: center;
 }
@@ -472,7 +587,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-// ─── Post Reach Out ───────────────────────────────────────────────────────────
+// --------- Post Reach Out ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .post-reach-out {
   margin-top: $space-md;
@@ -490,13 +605,87 @@
   }
 }
 
-// ─── Page Layout ─────────────────────────────────────────────────────────────
+// --------- Page Layout ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .page-content {
   padding: $space-2xl 0 $space-3xl;
 }
 
-// ─── About Page ──────────────────────────────────────────────────────────────
+// --------- Subscribe Page ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.subscribe-page {
+  padding: $space-2xl 0 $space-3xl;
+  max-width: 520px;
+}
+
+.subscribe-heading {
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: $space-md;
+}
+
+.subscribe-sub {
+  font-size: 1.05rem;
+  color: $color-text-muted;
+  line-height: 1.7;
+  margin-bottom: $space-xl;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  margin-bottom: $space-md;
+}
+
+.subscribe-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 11px 14px;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color $transition;
+
+  &::placeholder {
+    color: $color-text-faint;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+  }
+}
+
+.subscribe-btn {
+  padding: 11px 22px;
+  background: $color-accent;
+  color: #0d1117;
+  border: none;
+  border-radius: 6px;
+  font-family: $font-heading;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background $transition;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}
+
+.subscribe-note {
+  font-size: 0.85rem;
+  color: $color-text-faint;
+  margin: 0;
+}
+
+// --------- About Page ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .about-page {
   padding: $space-2xl 0 $space-3xl;
@@ -565,13 +754,14 @@
 
 .project-card {
   padding: $space-md;
+  background: $color-surface;
   border: 1px solid $color-border;
   border-radius: 8px;
   transition: border-color $transition, background $transition;
 
   &:hover {
     border-color: $color-accent;
-    background: $color-accent-light;
+    background: $color-surface-hover;
   }
 }
 
@@ -588,7 +778,7 @@
   color: $color-text-muted;
 }
 
-// ─── Footer ──────────────────────────────────────────────────────────────────
+// --------- Footer ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .site-footer {
   border-top: 1px solid $color-border-light;
@@ -629,18 +819,18 @@
   text-decoration: none;
 
   &:hover {
-    color: $color-text;
+    color: $color-accent;
   }
 }
 
-// ─── Empty State ─────────────────────────────────────────────────────────────
+// --------- Empty State ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .empty-state {
   color: $color-text-muted;
   font-style: italic;
 }
 
-// ─── Responsive ──────────────────────────────────────────────────────────────
+// --------- Responsive ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 @media (max-width: $bp-md) {
   .hero {
@@ -675,5 +865,9 @@
     flex-direction: column;
     align-items: flex-start;
     gap: $space-sm;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
   }
 }
