@@ -48,9 +48,6 @@
   transition: opacity $transition;
 }
 
-.nav-logo-dark  { display: none; }
-.nav-logo-light { display: block; }
-
 // Nav links
 .nav-links {
   display: flex;
@@ -1229,10 +1226,6 @@
   table td {
     border-color: #21262d;
   }
-
-  // Nav logo swap
-  .nav-logo-dark  { display: block; }
-  .nav-logo-light { display: none; }
 
   // Dark mode toggle icon swap
   .dark-mode-toggle {
