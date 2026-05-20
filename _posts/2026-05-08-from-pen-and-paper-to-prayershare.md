@@ -3,7 +3,7 @@ layout: post
 title: "From Pen and Paper to PrayerShare: An App Idea Born from a Real Problem"
 subtitle: "What if there was a clean, focused app for managing and sharing prayer requests?"
 date: 2026-05-08
-tags: [faith, product, ideas]
+tags: [faith, product, ideas, prayershare, prayer, app development]
 ---
 
 I've been keeping a prayer list for a while now. It started simple — a few names, a few requests, pen and paper. But somewhere along the way, the list kept growing. Now I'm managing fifteen requests at a time, sometimes more. Some of those prayers have been answered. Some are ongoing. And when I want to pray *with* someone else? I'm either texting them a photo of my handwritten notes or retyping everything from scratch.

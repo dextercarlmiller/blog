@@ -3,6 +3,7 @@ layout: post
 title: "Trying to Figure Out Design (And Mostly Failing, But Learning)"
 date: 2026-05-12
 author: Dexter Miller
+tags: [design, web development, learning]
 ---
 
 So I've been poking around something called Material Design lately. It's Google's design system — basically a set of guidelines for making things look and feel good. I found it because I've been building websites for small businesses, and honestly, some of them don't look as polished as I'd like. I figured there had to be a more systematic way to approach this instead of just winging it every time.

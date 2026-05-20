@@ -3,7 +3,7 @@ layout: post
 title: "Why Every Local Business Needs a Website (And It's Not What You Think)"
 subtitle: "The real reason a website matters has nothing to do with SEO rankings."
 date: 2026-04-15
-tags: [business, web development]
+tags: [business, web development, local business, fort-wayne, marketing]
 ---
 
 I hear the same objections all the time when I'm pitching a new client.
