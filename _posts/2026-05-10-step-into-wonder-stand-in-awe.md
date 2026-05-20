@@ -3,7 +3,7 @@ layout: post
 title: "'Step Into Wonder, Stand in Awe'"
 subtitle: "A First Assembly sermon by Rhonda Haslett"
 date: 2026-05-10
-categories: faith
+tags: [faith, sermon, church, wonder, reverence, awe]
 ---
 
 The sanctuary at First Assembly was still settling into its Sunday morning rhythm when the pastor Rhonda Haslett walked to the front with something unusual in hand — small sachets of candy, one for every woman in the room.

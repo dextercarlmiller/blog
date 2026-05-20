@@ -3,6 +3,7 @@ layout: post
 title: "Why I'm Building PrayerShare as a Web App First"
 date: 2026-05-15
 author: Dexter Miller
+tags: [product, prayershare, web development, app development]
 ---
 
 *A quick update on where things are at*
