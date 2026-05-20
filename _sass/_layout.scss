@@ -1,169 +1,335 @@
-// Container
+// Container - blog uses 720px for reading comfort; nav/footer use full width
 .container {
   max-width: $container-width;
   margin: 0 auto;
   padding: 0 $space-lg;
 }
 
-// ─── Header ──────────────────────────────────────────────────────────────────
+// =============================================================================
+// NAV - exact class names from dextermiller.com CSS
+// =============================================================================
 
-.site-header {
+.site-nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba($color-bg, 0.92);
+  background: rgba(15, 23, 42, 0.97);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 $space-lg;
   height: $header-height;
   display: flex;
   align-items: center;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
-.site-logo {
+// Logo
+.nav-logo {
   display: flex;
   align-items: center;
-  gap: $space-sm;
-  color: $color-text;
+  padding: 8px 4px;
   text-decoration: none;
-
-  &:hover {
-    color: $color-text;
-  }
-
-  &:hover .logo-mark {
-    background: $color-accent;
-  }
-}
-
-.logo-mark {
-  width: 32px;
-  height: 32px;
-  background: $color-text;
-  color: #fff;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-heading;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  transition: background $transition;
   flex-shrink: 0;
+
+  &:hover .nav-logo-img {
+    opacity: 0.8;
+  }
 }
 
-.logo-name {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: 1rem;
-  color: $color-text;
-  letter-spacing: -0.01em;
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  transition: opacity $transition;
 }
 
-.site-nav {
+// Nav links
+.nav-links {
   display: flex;
   align-items: center;
-  gap: $space-md;
+  gap: 4px;
 }
 
 .nav-link {
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.9rem;
   font-weight: 500;
-  color: $color-text-muted;
+  padding: 8px 16px;
+  border-radius: $radius-xs;
   text-decoration: none;
-  transition: color $transition;
-  padding: $space-xs $space-sm;
-  border-radius: 4px;
+  transition: all $transition;
 
-  &:hover, &.active {
-    color: $color-text;
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   &.active {
-    color: $color-accent;
+    color: $color-blue-pale;
   }
 }
 
-// ─── Main ────────────────────────────────────────────────────────────────────
+// Dark mode toggle button
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: all $transition;
+  margin-left: $space-sm;
+  flex-shrink: 0;
+  padding: 0;
 
-.site-main {
-  min-height: calc(100vh - #{$header-height} - 120px);
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-sun  { display: none; }
+  .icon-moon { display: block; }
 }
 
-// ─── Hero ────────────────────────────────────────────────────────────────────
+// Hamburger button - hidden on desktop, shown on mobile
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin-left: $space-sm;
+  flex-shrink: 0;
 
+  span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    transition: 0.2s;
+    transform-origin: center center;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    span { background: #fff; }
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+// =============================================================================
+// MAIN / HERO
+// =============================================================================
+
+.site-main {
+  min-height: calc(100vh - #{$header-height} - 160px);
+}
+
+// Hero - matches .hero gradient on dextermiller.com (page-hero variant)
 .hero {
-  padding: $space-3xl 0 $space-2xl;
-  border-bottom: 1px solid $color-border-light;
+  background: linear-gradient(135deg, rgb(10, 22, 40) 0%, rgb(15, 23, 42) 40%, rgb(30, 58, 95) 100%);
+  color: #fff;
+  padding: $space-3xl $space-lg $space-2xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
 }
 
 .hero-inner {
-  max-width: 560px;
+  max-width: $container-width;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-eyebrow {
-  font-size: 1rem;
-  color: $color-text-muted;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-blue-pale;
   margin-bottom: $space-md;
+  padding: 5px 12px;
+  border: 1px solid rgba(191, 219, 254, 0.3);
+  border-radius: 4px;
 }
 
 .hero-headline {
+  font-family: $font-heading;
   font-size: clamp(2rem, 5vw, 2.75rem);
-  font-weight: 700;
-  color: $color-text;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  margin-bottom: $space-lg;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: $space-md;
 }
 
 .hero-sub {
   font-size: 1.05rem;
-  color: $color-text-muted;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  max-width: 540px;
   margin-bottom: 0;
 }
 
-// ─── Posts Section ───────────────────────────────────────────────────────────
+// =============================================================================
+// POSTS SECTION
+// =============================================================================
 
 .posts-section {
   padding: $space-2xl 0;
+  background: $color-bg;
 }
 
 .section-heading {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $color-text-faint;
+  color: $color-accent;
+  margin-bottom: $space-xl;
+  display: inline-block;
+  padding: 4px 10px;
+  background: $color-accent-light;
+  border: 1px solid $color-blue-pale;
+  border-radius: 4px;
+}
+
+// =============================================================================
+// SEARCH BAR
+// =============================================================================
+
+.search-wrap {
+  margin-bottom: $space-lg;
+}
+
+.search-input {
+  width: 100%;
+  padding: 11px 16px;
+  background: $color-bg-alt;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  transition: border-color $transition, box-shadow $transition;
+  outline: none;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+}
+
+// =============================================================================
+// TAG FILTER - styled as pills matching .tech-tag / btn patterns
+// =============================================================================
+
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
   margin-bottom: $space-xl;
 }
 
-// ─── Post Cards ──────────────────────────────────────────────────────────────
+.tag-filter-btn {
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid $color-border;
+  background: $color-bg-alt;
+  color: $color-text-muted;
+  font-family: $font-body;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+    background: $color-accent-light;
+  }
+
+  &.active {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: rgba(37, 99, 235, 0.25) 0 2px 8px;
+  }
+}
+
+// =============================================================================
+// POST CARDS - matches .project-card / .interest-card on dextermiller.com
+// white bg, 1px border, --radius (12px), --shadow
+// =============================================================================
 
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: $space-md;
 }
 
 .post-card {
-  padding: $space-xl 0;
-  border-bottom: 1px solid $color-border-light;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: $space-lg $space-lg $space-md;
+  box-shadow: $shadow;
+  transition: transform $transition, box-shadow $transition;
 
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    border-bottom: none;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
   }
 }
 
@@ -175,31 +341,37 @@
 }
 
 .post-date {
-  font-size: 0.85rem;
-  color: $color-text-faint;
+  font-size: 0.8rem;
+  color: $color-text-muted;
 }
 
 .post-tag-dot {
-  color: $color-text-faint;
+  color: $color-text-muted;
   font-size: 0.85rem;
 }
 
+// Tag pill - matches .tech-tag on dextermiller.com
 .post-tag {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: $color-tag-text;
-  background: $color-tag-bg;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-accent;
+  background: $color-accent-light;
+  border: 1px solid $color-blue-pale;
   padding: 2px 8px;
-  border-radius: 100px;
+  border-radius: 4px;
 }
 
 .post-card-title {
-  font-size: 1.35rem;
+  font-family: $font-heading;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: $space-sm;
+  line-height: 1.3;
 
   a {
-    color: $color-text;
+    color: $color-navy;
     text-decoration: none;
     transition: color $transition;
 
@@ -210,45 +382,63 @@
 }
 
 .post-card-excerpt {
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   color: $color-text-muted;
-  line-height: 1.65;
+  line-height: 1.72;
   margin-bottom: $space-md;
 }
 
+// "Read more" - matches .project-card-link on dextermiller.com
 .read-more {
   font-size: 0.875rem;
   font-weight: 600;
   color: $color-accent;
   text-decoration: none;
+  display: inline-block;
 
   &:hover {
+    text-decoration: underline;
     color: $color-accent-hover;
   }
 }
 
-// ─── Pagination ──────────────────────────────────────────────────────────────
+.no-results {
+  color: $color-text-muted;
+  font-style: italic;
+  padding: $space-xl 0;
+}
+
+// =============================================================================
+// PAGINATION
+// =============================================================================
 
 .pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: $space-xl;
-  border-top: 1px solid $color-border-light;
+  border-top: 1px solid $color-border;
   margin-top: $space-xl;
 }
 
 .pagination-link {
   font-size: 0.875rem;
   font-weight: 600;
+  color: $color-accent;
+
+  &:hover {
+    color: $color-accent-hover;
+  }
 }
 
 .pagination-info {
   font-size: 0.85rem;
-  color: $color-text-faint;
+  color: $color-text-muted;
 }
 
-// ─── Post Layout ─────────────────────────────────────────────────────────────
+// =============================================================================
+// POST LAYOUT
+// =============================================================================
 
 .post {
   padding: $space-2xl 0 $space-3xl;
@@ -270,17 +460,20 @@
   font-weight: 500;
   color: $color-text-muted;
   text-decoration: none;
+  transition: color $transition;
 
   &:hover {
-    color: $color-text;
+    color: $color-navy;
   }
 }
 
 .post-title {
+  font-family: $font-heading;
   font-size: clamp(1.75rem, 4vw, 2.4rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: $color-navy;
   margin-bottom: $space-md;
 }
 
@@ -291,15 +484,18 @@
   margin-bottom: 0;
 }
 
+// Accent divider - matches .section-divider on dextermiller.com
 .post-divider {
-  height: 3px;
-  width: 40px;
+  width: 48px;
+  height: 4px;
   background: $color-accent;
   border-radius: 2px;
   margin-top: $space-xl;
 }
 
-// ─── Post Content ────────────────────────────────────────────────────────────
+// =============================================================================
+// POST CONTENT
+// =============================================================================
 
 .post-content {
   font-size: 1.05rem;
@@ -307,12 +503,16 @@
 
   h2 {
     font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-navy;
     margin-top: $space-2xl;
     margin-bottom: $space-md;
   }
 
   h3 {
     font-size: 1.2rem;
+    font-weight: 700;
+    color: $color-navy;
     margin-top: $space-xl;
     margin-bottom: $space-sm;
   }
@@ -320,37 +520,85 @@
   h4 {
     font-size: 1rem;
     font-weight: 700;
+    color: $color-navy;
     margin-top: $space-lg;
     margin-bottom: $space-sm;
   }
 
   p {
     margin-bottom: 1.6em;
+    color: $color-text;
   }
 
   a {
     text-decoration: underline;
-    text-decoration-color: $color-accent;
     text-underline-offset: 3px;
-
-    &:hover {
-      text-decoration-color: $color-accent-hover;
-    }
   }
 
   img {
-    border-radius: 8px;
+    border-radius: $radius-sm;
     margin: $space-xl 0;
+    box-shadow: $shadow;
   }
 
   .highlight {
     margin-bottom: 1.5em;
-    border-radius: 8px;
+    border-radius: $radius-sm;
     overflow: hidden;
   }
 }
 
-// ─── Post Footer ─────────────────────────────────────────────────────────────
+// =============================================================================
+// SUBSCRIBE CTA (bottom of each post)
+// Matches .value-card / card-with-blue-top-border pattern
+// =============================================================================
+
+.post-subscribe-cta {
+  margin-top: $space-2xl;
+  padding: $space-xl $space-lg;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-top: 3px solid $color-accent;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  text-align: center;
+
+  p {
+    font-size: 0.95rem;
+    color: $color-text-muted;
+    margin-bottom: $space-md;
+  }
+
+  // Matches .btn.btn-primary on dextermiller.com
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: $color-accent;
+    color: #fff;
+    border: 2px solid $color-accent;
+    border-radius: $radius-sm;
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all $transition;
+    line-height: 1;
+
+    &:hover {
+      background: $color-accent-hover;
+      border-color: $color-accent-hover;
+      transform: translateY(-1px);
+      box-shadow: rgba(37, 99, 235, 0.35) 0 4px 16px;
+    }
+  }
+}
+
+// =============================================================================
+// POST FOOTER (tags + prev/next nav)
+// =============================================================================
 
 .post-footer {
   margin-top: $space-3xl;
@@ -376,14 +624,17 @@
   flex-direction: column;
   gap: $space-xs;
   padding: $space-md;
+  background: $color-bg-card;
   border: 1px solid $color-border;
-  border-radius: 8px;
+  border-radius: $radius-sm;
   text-decoration: none;
-  transition: border-color $transition, background $transition;
+  box-shadow: $shadow;
+  transition: transform $transition, box-shadow $transition, border-color $transition;
 
   &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
     border-color: $color-accent;
-    background: $color-accent-light;
   }
 }
 
@@ -392,10 +643,10 @@
 }
 
 .post-nav-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: $color-text-muted;
 }
 
@@ -403,17 +654,20 @@
   font-family: $font-heading;
   font-weight: 700;
   font-size: 0.9rem;
-  color: $color-text;
+  color: $color-navy;
   line-height: 1.3;
 }
 
-// ─── Post Reactions ───────────────────────────────────────────────────────────
+// =============================================================================
+// POST REACTIONS
+// =============================================================================
 
 .post-reactions {
   margin-top: $space-2xl;
-  padding: $space-xl;
-  background: $color-surface;
-  border-radius: 12px;
+  padding: $space-xl $space-lg;
+  background: $color-bg-alt;
+  border: 1px solid $color-border;
+  border-radius: $radius;
   text-align: center;
 }
 
@@ -430,24 +684,25 @@
 }
 
 .reaction-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: $space-sm;
-  padding: $space-sm $space-lg;
-  border: 1px solid $color-border;
+  padding: 10px $space-lg;
+  border: 2px solid $color-border;
   border-radius: 100px;
   background: $color-bg;
   color: $color-text-muted;
-  font-family: $font-heading;
+  font-family: $font-body;
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: border-color $transition, color $transition, background $transition;
+  transition: all $transition;
 
   &:hover:not(:disabled) {
     border-color: $color-accent;
     color: $color-accent;
     background: $color-accent-light;
+    transform: translateY(-1px);
   }
 
   &.reacted {
@@ -472,7 +727,9 @@
   font-variant-numeric: tabular-nums;
 }
 
-// ─── Post Reach Out ───────────────────────────────────────────────────────────
+// =============================================================================
+// POST REACH-OUT LINK
+// =============================================================================
 
 .post-reach-out {
   margin-top: $space-md;
@@ -480,7 +737,7 @@
 
   a {
     font-size: 0.875rem;
-    color: $color-text-faint;
+    color: $color-text-muted;
     text-decoration: none;
     transition: color $transition;
 
@@ -490,13 +747,13 @@
   }
 }
 
-// ─── Page Layout ─────────────────────────────────────────────────────────────
+// =============================================================================
+// PAGE / ABOUT LAYOUTS
+// =============================================================================
 
 .page-content {
   padding: $space-2xl 0 $space-3xl;
 }
-
-// ─── About Page ──────────────────────────────────────────────────────────────
 
 .about-page {
   padding: $space-2xl 0 $space-3xl;
@@ -505,29 +762,36 @@
 .about-header {
   margin-bottom: $space-2xl;
   padding-bottom: $space-xl;
-  border-bottom: 1px solid $color-border-light;
+  border-bottom: 1px solid $color-border;
 }
 
 .about-eyebrow {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $color-text-faint;
-  margin-bottom: $space-md;
+  color: $color-accent;
+  margin-bottom: $space-sm;
+  display: inline-block;
+  padding: 4px 10px;
+  background: $color-accent-light;
+  border: 1px solid $color-blue-pale;
+  border-radius: 4px;
 }
 
 .about-title {
+  font-family: $font-heading;
   font-size: clamp(2rem, 5vw, 2.75rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $color-navy;
   margin-bottom: $space-lg;
 }
 
 .about-intro {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: $color-text-muted;
-  line-height: 1.7;
+  line-height: 1.75;
   max-width: 520px;
 }
 
@@ -537,22 +801,25 @@
 
   h2 {
     font-size: 1.3rem;
+    font-weight: 700;
+    color: $color-navy;
     margin-top: $space-2xl;
     margin-bottom: $space-md;
   }
 
   p {
+    color: $color-text-muted;
     margin-bottom: 1.6em;
+  }
+
+  strong {
+    color: $color-text;
+    font-weight: 600;
   }
 
   a {
     text-decoration: underline;
-    text-decoration-color: $color-accent;
     text-underline-offset: 3px;
-
-    &:hover {
-      text-decoration-color: $color-accent-hover;
-    }
   }
 }
 
@@ -563,15 +830,18 @@
   margin: $space-lg 0;
 }
 
+// Matches .skill-category / .project-card on dextermiller.com
 .project-card {
-  padding: $space-md;
+  background: $color-bg-card;
   border: 1px solid $color-border;
-  border-radius: 8px;
-  transition: border-color $transition, background $transition;
+  border-radius: $radius;
+  padding: $space-md;
+  box-shadow: $shadow;
+  transition: transform $transition, box-shadow $transition;
 
   &:hover {
-    border-color: $color-accent;
-    background: $color-accent-light;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
   }
 }
 
@@ -579,72 +849,188 @@
   font-family: $font-heading;
   font-weight: 700;
   font-size: 0.95rem;
-  color: $color-text;
+  color: $color-navy;
   margin-bottom: $space-xs;
 }
 
 .project-desc {
   font-size: 0.85rem;
   color: $color-text-muted;
+  line-height: 1.65;
 }
 
-// ─── Footer ──────────────────────────────────────────────────────────────────
+// =============================================================================
+// SUBSCRIBE PAGE
+// =============================================================================
+
+.subscribe-page {
+  padding: $space-2xl 0 $space-3xl;
+  max-width: 520px;
+}
+
+.subscribe-heading {
+  font-family: $font-heading;
+  font-size: clamp(1.75rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $color-navy;
+  margin-bottom: $space-md;
+}
+
+.subscribe-sub {
+  font-size: 1.05rem;
+  color: $color-text-muted;
+  line-height: 1.75;
+  margin-bottom: $space-xl;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: $space-sm;
+  flex-wrap: wrap;
+  margin-bottom: $space-md;
+}
+
+.subscribe-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  background: $color-bg-alt;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color $transition, box-shadow $transition;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+}
+
+// Matches .btn.btn-primary on dextermiller.com
+.subscribe-btn {
+  padding: 12px 28px;
+  background: $color-accent;
+  color: #fff;
+  border: 2px solid $color-accent;
+  border-radius: $radius-sm;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition;
+  line-height: 1;
+
+  &:hover {
+    background: $color-accent-hover;
+    border-color: $color-accent-hover;
+    transform: translateY(-1px);
+    box-shadow: rgba(37, 99, 235, 0.35) 0 4px 16px;
+  }
+}
+
+.subscribe-note {
+  font-size: 0.85rem;
+  color: $color-text-muted;
+  margin: 0;
+}
+
+// =============================================================================
+// FOOTER - matches .site-footer on dextermiller.com exactly
+// Always dark navy, white text
+// =============================================================================
 
 .site-footer {
-  border-top: 1px solid $color-border-light;
-  padding: $space-xl 0;
-  margin-top: auto;
+  background: $color-navy;
+  color: rgb(203, 213, 225);
+  padding: 56px $space-lg 32px;
 }
 
 .footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-md;
-  flex-wrap: wrap;
+  max-width: $container-width;
+  margin: 0 auto;
 }
 
-.footer-tagline {
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: $space-xl;
+  margin-bottom: $space-xl;
+  padding-bottom: $space-xl;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand-name {
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.footer-brand-sub {
+  font-size: 0.85rem;
+  color: rgb(71, 85, 105);
+}
+
+// Matches .footer-nav on dextermiller.com
+.footer-right {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-link {
+  color: rgb(148, 163, 184);
   font-size: 0.875rem;
-  color: $color-text;
-  margin-bottom: $space-xs;
+  padding: 6px 14px;
+  border-radius: $radius-xs;
+  text-decoration: none;
+  transition: all $transition;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+.footer-bottom {
+  text-align: center;
 }
 
 .footer-copy {
   font-size: 0.8rem;
-  color: $color-text-faint;
-  margin-bottom: 0;
+  color: rgb(148, 163, 184);
+  margin: 0;
 }
 
-.footer-right {
-  display: flex;
-  gap: $space-lg;
-}
-
-.footer-link {
-  font-size: 0.875rem;
-  color: $color-text-muted;
-  text-decoration: none;
-
-  &:hover {
-    color: $color-text;
-  }
-}
-
-// ─── Empty State ─────────────────────────────────────────────────────────────
+// =============================================================================
+// UTILITIES
+// =============================================================================
 
 .empty-state {
   color: $color-text-muted;
   font-style: italic;
 }
 
-// ─── Responsive ──────────────────────────────────────────────────────────────
+// =============================================================================
+// RESPONSIVE
+// =============================================================================
 
 @media (max-width: $bp-md) {
   .hero {
-    padding: $space-2xl 0 $space-xl;
+    padding: $space-2xl $space-lg $space-xl;
   }
 
   .post-nav {
@@ -655,18 +1041,50 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .footer-inner {
+  .footer-top {
     flex-direction: column;
-    align-items: flex-start;
-    gap: $space-md;
+    gap: $space-lg;
+  }
+}
+
+// Mobile nav - matches dextermiller.com @media (max-width: 700px) nav behaviour
+@media (max-width: 700px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;
+    z-index: 99;
+
+    &.nav-open {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: $space-lg;
   }
 }
 
 @media (max-width: $bp-sm) {
-  .logo-name {
-    display: none;
-  }
-
   .about-projects {
     grid-template-columns: 1fr;
   }
@@ -675,5 +1093,143 @@
     flex-direction: column;
     align-items: flex-start;
     gap: $space-sm;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .reactions-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+// =============================================================================
+// DARK MODE - [data-theme="dark"] overrides matching dextermiller.com exactly
+// Applied by theme.js toggling data-theme="dark" on <html>
+// =============================================================================
+
+[data-theme="dark"] {
+  // Page colors
+  .site-main,
+  .posts-section,
+  .post,
+  .page-content,
+  .about-page,
+  .subscribe-page,
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+  }
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    color: #f0f6fc;
+  }
+
+  // Links
+  a {
+    color: $color-blue-light;
+    &:hover { color: $color-blue-pale; }
+  }
+
+  // Cards
+  .post-card,
+  .post-nav-link,
+  .post-reactions,
+  .post-subscribe-cta,
+  .project-card,
+  .reaction-btn {
+    background: #1c2333;
+    border-color: #30363d;
+  }
+
+  .post-card:hover,
+  .post-nav-link:hover {
+    background: #21262d;
+    border-color: #58a6ff;
+  }
+
+  // Post content
+  .post-content p,
+  .about-content p {
+    color: #c9d1d9;
+  }
+
+  // Post footer
+  .post-footer {
+    border-top-color: #30363d;
+  }
+
+  // Inputs
+  .search-input,
+  .subscribe-input {
+    background: #161b22;
+    border-color: #30363d;
+    color: #e6edf3;
+
+    &::placeholder { color: #6e7681; }
+    &:focus { border-color: $color-blue-light; }
+  }
+
+  // Tag filter buttons
+  .tag-filter-btn {
+    background: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+  }
+
+  // Section heading badge
+  .section-heading,
+  .about-eyebrow {
+    background: rgba(56, 139, 253, 0.15);
+    border-color: rgba(56, 139, 253, 0.4);
+    color: #79c0ff;
+  }
+
+  // Post tags
+  .post-tag {
+    background: rgba(56, 139, 253, 0.15);
+    border-color: rgba(56, 139, 253, 0.4);
+    color: #79c0ff;
+  }
+
+  // Hero text colours stay the same (hero is always dark)
+
+  // Footer brand sub
+  .footer-brand-sub {
+    color: #8b949e;
+  }
+
+  // Dividers and borders
+  hr,
+  .post-divider + *,
+  .about-header {
+    border-color: #30363d;
+  }
+
+  // Code
+  code {
+    background: #161b22;
+    border-color: #30363d;
+    color: #79c0ff;
+  }
+
+  // Tables
+  table th {
+    background: #161b22;
+    border-color: #30363d;
+    color: #f0f6fc;
+  }
+
+  table td {
+    border-color: #21262d;
+  }
+
+  // Dark mode toggle icon swap
+  .dark-mode-toggle {
+    .icon-sun  { display: block; }
+    .icon-moon { display: none; }
   }
 }

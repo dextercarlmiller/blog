@@ -4,28 +4,38 @@ title: Subscribe
 permalink: /subscribe/
 ---
 
-<div style="max-width: 480px; padding: 48px 0 72px;">
+<div class="subscribe-page">
 
-<p style="font-size: 1.05rem; color: #64748b; line-height: 1.7; margin-bottom: 32px;">I write about building software, growing in faith, and chasing fitness goals — the things I keep coming back to. If any of that resonates, drop your email below and I'll send a note whenever a new post goes up.</p>
+<span class="about-eyebrow">Newsletter</span>
+<h1 class="subscribe-heading">Stay in the loop</h1>
+<p class="subscribe-sub">I write about building software, growing in faith, and chasing fitness goals. Drop your email below and I'll send a note whenever a new post goes up. No spam &mdash; just new posts, whenever I write them.</p>
 
+<!-- PASTE MAILCHIMP ACTION URL HERE
+     Find it in Mailchimp: Audience -> Signup forms -> Embedded forms -> copy the action="..." value.
+     It looks like: https://yourname.us1.list-manage.com/subscribe/post?u=XXXXX&amp;id=XXXXX
+     Replace the action attribute value below. Also update the hidden anti-bot field name. -->
 <form
-  action="https://buttondown.com/api/emails/embed-subscribe/dextercarlmiller"
+  action="PASTE_MAILCHIMP_ACTION_URL_HERE"
   method="post"
-  style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;"
+  class="subscribe-form"
+  target="_blank"
+  novalidate
 >
   <input
     type="email"
-    name="email"
+    name="EMAIL"
+    class="subscribe-input"
     placeholder="your@email.com"
     required
-    style="flex: 1; min-width: 200px; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-family: inherit; font-size: 0.95rem; color: #0f172a; background: #ffffff;"
+    aria-label="Email address"
   >
-  <button
-    type="submit"
-    style="padding: 10px 20px; background: #2563eb; color: #ffffff; border: none; border-radius: 6px; font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; letter-spacing: -0.01em;"
-  >Subscribe</button>
+  <!-- Mailchimp anti-bot honeypot field — do not remove or change -->
+  <div style="position:absolute;left:-5000px;" aria-hidden="true">
+    <input type="text" name="b_REPLACE_WITH_U_VALUE_REPLACE_WITH_ID" tabindex="-1" value="">
+  </div>
+  <button type="submit" class="subscribe-btn">Subscribe</button>
 </form>
 
-<p style="font-size: 0.85rem; color: #94a3b8; margin: 0;"><em>No spam. Just new posts, whenever I write them.</em></p>
+<p class="subscribe-note"><em>No spam. Unsubscribe any time.</em></p>
 
 </div>

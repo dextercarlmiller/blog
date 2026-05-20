@@ -27,9 +27,47 @@ layout: default
       {% endif %}
 
       {% if posts_list.size > 0 %}
-        <div class="post-list">
+
+        <!-- Search bar -->
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="post-search"
+            class="search-input"
+            placeholder="Search posts…"
+            aria-label="Search posts"
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- Tag filter buttons -->
+        {% assign all_tags = "" | split: "" %}
+        {% for post in posts_list %}
+          {% for tag in post.tags %}
+            {% unless all_tags contains tag %}
+              {% assign all_tags = all_tags | push: tag %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+        {% assign all_tags = all_tags | sort %}
+
+        {% if all_tags.size > 0 %}
+          <div class="tag-filter" id="tag-filter">
+            <button class="tag-filter-btn active" data-tag="all">All</button>
+            {% for tag in all_tags %}
+              <button class="tag-filter-btn" data-tag="{{ tag | downcase }}">{{ tag }}</button>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Post list — data attributes carry tag + search data -->
+        <div class="post-list" id="post-list">
           {% for post in posts_list %}
-            <article class="post-card">
+            <article class="post-card"
+              data-tags="{% for t in post.tags %}{{ t | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+              data-title="{{ post.title | downcase | xml_escape }}"
+              data-excerpt="{{ post.excerpt | strip_html | downcase | truncatewords: 50 | xml_escape }}"
+            >
               <div class="post-card-meta">
                 <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
                   {{ post.date | date: "%B %-d, %Y" }}
@@ -52,6 +90,8 @@ layout: default
           {% endfor %}
         </div>
 
+        <p class="no-results" id="no-results" style="display:none;">No posts match your search.</p>
+
         {% if paginator.total_pages > 1 %}
           <nav class="pagination">
             {% if paginator.previous_page %}
@@ -70,3 +110,98 @@ layout: default
     </div>
   </section>
 </div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+(function () {
+  var cards = Array.from(document.querySelectorAll('#post-list .post-card'));
+  var searchInput = document.getElementById('post-search');
+  var tagButtons = Array.from(document.querySelectorAll('.tag-filter-btn'));
+  var noResults = document.getElementById('no-results');
+  var activeTag = 'all';
+  var lunrIndex = null;
+  var lunrMatchIds = null; // null = no active search
+
+  // Build Lunr index from card data attributes
+  function buildIndex() {
+    lunrIndex = lunr(function () {
+      this.ref('idx');
+      this.field('title', { boost: 10 });
+      this.field('excerpt');
+      cards.forEach(function (card, i) {
+        this.add({
+          idx: i,
+          title: card.getAttribute('data-title') || '',
+          excerpt: card.getAttribute('data-excerpt') || ''
+        });
+      }, this);
+    });
+  }
+
+  function applyFilters() {
+    var query = (searchInput ? searchInput.value : '').trim();
+    var visible = 0;
+
+    // Run Lunr search
+    if (query.length >= 2 && lunrIndex) {
+      try {
+        var results = lunrIndex.search(query + '*');
+        lunrMatchIds = {};
+        results.forEach(function (r) { lunrMatchIds[r.ref] = true; });
+      } catch (e) {
+        // Lunr throws on some query strings; fall back to substring
+        lunrMatchIds = null;
+      }
+    } else {
+      lunrMatchIds = null;
+    }
+
+    cards.forEach(function (card, i) {
+      var tags = card.getAttribute('data-tags') || '';
+      var title = card.getAttribute('data-title') || '';
+      var excerpt = card.getAttribute('data-excerpt') || '';
+
+      var tagMatch = activeTag === 'all' || tags.split(',').indexOf(activeTag) !== -1;
+
+      var searchMatch;
+      if (!query) {
+        searchMatch = true;
+      } else if (lunrMatchIds !== null) {
+        searchMatch = lunrMatchIds[String(i)] === true;
+      } else {
+        var q = query.toLowerCase();
+        searchMatch = title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1;
+      }
+
+      if (tagMatch && searchMatch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = visible === 0 ? '' : 'none';
+    }
+  }
+
+  // Build index after Lunr loads (it's synchronous via CDN)
+  if (typeof lunr !== 'undefined') {
+    buildIndex();
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  tagButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activeTag = btn.getAttribute('data-tag');
+      tagButtons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+})();
+</script>

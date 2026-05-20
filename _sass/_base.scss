@@ -14,8 +14,8 @@ body {
   font-family: $font-body;
   font-size: 1rem;
   line-height: 1.7;
-  color: $color-text-body;
-  background-color: $color-bg;
+  color: $color-text;
+  background: $color-bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,8 +38,8 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
-  color: $color-text;
-  line-height: 1.25;
+  color: $color-navy;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
@@ -54,7 +54,7 @@ p {
 code {
   font-family: $font-mono;
   font-size: 0.875em;
-  background: $color-surface;
+  background: $color-bg-alt;
   color: $color-accent;
   padding: 2px 6px;
   border-radius: 4px;
@@ -62,10 +62,10 @@ code {
 }
 
 pre {
-  background: $color-text;
+  background: $color-navy;
   color: #e2e8f0;
   padding: $space-lg;
-  border-radius: 8px;
+  border-radius: $radius-sm;
   overflow-x: auto;
   margin-bottom: 1.5em;
   font-size: 0.875rem;
@@ -118,12 +118,13 @@ table {
     font-weight: 600;
     text-align: left;
     padding: $space-sm $space-md;
-    background: $color-surface;
+    background: $color-bg-alt;
     border-bottom: 2px solid $color-border;
+    color: $color-navy;
   }
 
   td {
     padding: $space-sm $space-md;
-    border-bottom: 1px solid $color-border-light;
+    border-bottom: 1px solid $color-border;
   }
 }
