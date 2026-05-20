@@ -3,7 +3,7 @@ layout: post
 title: "Welcome to the Blog"
 subtitle: "A little context on why I'm starting this, and what you can expect."
 date: 2026-05-06
-tags: [personal, intro, fort-wayne]
+tags: [personal, fort-wayne]
 ---
 
 I've been meaning to start a blog for a while.

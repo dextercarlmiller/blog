@@ -3,7 +3,7 @@ layout: post
 title: "Don't Run. Embrace It. Call His Name."
 subtitle: "A First Assembly sermon by Pastor Rob"
 date: 2026-05-17
-tags: [faith, sermon, church, ruth, trust, hardship]
+tags: [faith, sermon, church, trust, hardship]
 ---
 
 The summer series hadn't even officially started yet, but you could feel the momentum in the room. Pastor Rob opened by mentioning a citywide worship night earlier in the week — dozens of churches, hundreds of people, all gathered together as one body. Then a Wednesday night service right there at First Assembly, altars full, teenagers down front praying alongside families. It had been one of those weeks where the church felt like the church.
