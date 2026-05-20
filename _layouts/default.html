@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
   {% include head.html %}
 </head>
@@ -9,5 +9,6 @@
     {{ content }}
   </main>
   {% include footer.html %}
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 </body>
 </html>

@@ -6,11 +6,10 @@
 }
 
 // =============================================================================
-// NAV - matches .site-nav / .nav-container on dextermiller.com
-// Always dark navy, never changes with page background
+// NAV - exact class names from dextermiller.com CSS
 // =============================================================================
 
-.site-header {
+.site-nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -18,69 +17,42 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  height: $header-height;
-  display: flex;
-  align-items: center;
 }
 
-.header-inner {
+.nav-container {
   max-width: $container-width;
   margin: 0 auto;
   padding: 0 $space-lg;
-  width: 100%;
-  height: 100%;
+  height: $header-height;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-// Logo - matches .nav-logo / .nav-logo-img on dextermiller.com
-.site-logo {
+// Logo
+.nav-logo {
   display: flex;
   align-items: center;
   padding: 8px 4px;
   text-decoration: none;
-  transition: opacity $transition;
+  flex-shrink: 0;
 
-  &:hover {
+  &:hover .nav-logo-img {
     opacity: 0.8;
   }
 }
 
-.logo-img {
+.nav-logo-img {
   height: 36px;
   width: auto;
-  display: block;
+  transition: opacity $transition;
 }
 
-// Text fallback shown when logo image fails to load
-.logo-mark {
-  display: none;
-  width: 36px;
-  height: 36px;
-  background: $color-accent;
-  color: #fff;
-  border-radius: $radius-xs;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-heading;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-}
+.nav-logo-dark  { display: none; }
+.nav-logo-light { display: block; }
 
-.logo-name {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: -0.01em;
-  margin-left: $space-sm;
-}
-
-// Nav links - matches .nav-links / .nav-link on dextermiller.com
-.site-nav {
+// Nav links
+.nav-links {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -103,16 +75,82 @@
   &.active {
     color: $color-blue-pale;
   }
+}
 
-  // "Website ->" external link --- slightly dimmer to not compete with Blog/About
-  &.nav-link-external {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.85rem;
+// Dark mode toggle button
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: all $transition;
+  margin-left: $space-sm;
+  flex-shrink: 0;
+  padding: 0;
 
-    &:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-sun  { display: none; }
+  .icon-moon { display: block; }
+}
+
+// Hamburger button - hidden on desktop, shown on mobile
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin-left: $space-sm;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    transition: 0.2s;
+    transform-origin: center center;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    span { background: #fff; }
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   }
 }
 
@@ -1012,11 +1050,44 @@
   }
 }
 
-@media (max-width: $bp-sm) {
-  .logo-name {
-    display: none;
+// Mobile nav - matches dextermiller.com @media (max-width: 700px) nav behaviour
+@media (max-width: 700px) {
+  .nav-hamburger {
+    display: flex;
   }
 
+  .nav-links {
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;
+    z-index: 99;
+
+    &.nav-open {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: $space-lg;
+  }
+}
+
+@media (max-width: $bp-sm) {
   .about-projects {
     grid-template-columns: 1fr;
   }
@@ -1034,5 +1105,138 @@
   .reactions-buttons {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+// =============================================================================
+// DARK MODE - [data-theme="dark"] overrides matching dextermiller.com exactly
+// Applied by theme.js toggling data-theme="dark" on <html>
+// =============================================================================
+
+[data-theme="dark"] {
+  // Page colors
+  .site-main,
+  .posts-section,
+  .post,
+  .page-content,
+  .about-page,
+  .subscribe-page,
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+  }
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    color: #f0f6fc;
+  }
+
+  // Links
+  a {
+    color: $color-blue-light;
+    &:hover { color: $color-blue-pale; }
+  }
+
+  // Cards
+  .post-card,
+  .post-nav-link,
+  .post-reactions,
+  .post-subscribe-cta,
+  .project-card,
+  .reaction-btn {
+    background: #1c2333;
+    border-color: #30363d;
+  }
+
+  .post-card:hover,
+  .post-nav-link:hover {
+    background: #21262d;
+    border-color: #58a6ff;
+  }
+
+  // Post content
+  .post-content p,
+  .about-content p {
+    color: #c9d1d9;
+  }
+
+  // Post footer
+  .post-footer {
+    border-top-color: #30363d;
+  }
+
+  // Inputs
+  .search-input,
+  .subscribe-input {
+    background: #161b22;
+    border-color: #30363d;
+    color: #e6edf3;
+
+    &::placeholder { color: #6e7681; }
+    &:focus { border-color: $color-blue-light; }
+  }
+
+  // Tag filter buttons
+  .tag-filter-btn {
+    background: #161b22;
+    border-color: #30363d;
+    color: #8b949e;
+  }
+
+  // Section heading badge
+  .section-heading,
+  .about-eyebrow {
+    background: rgba(56, 139, 253, 0.15);
+    border-color: rgba(56, 139, 253, 0.4);
+    color: #79c0ff;
+  }
+
+  // Post tags
+  .post-tag {
+    background: rgba(56, 139, 253, 0.15);
+    border-color: rgba(56, 139, 253, 0.4);
+    color: #79c0ff;
+  }
+
+  // Hero text colours stay the same (hero is always dark)
+
+  // Footer brand sub
+  .footer-brand-sub {
+    color: #8b949e;
+  }
+
+  // Dividers and borders
+  hr,
+  .post-divider + *,
+  .about-header {
+    border-color: #30363d;
+  }
+
+  // Code
+  code {
+    background: #161b22;
+    border-color: #30363d;
+    color: #79c0ff;
+  }
+
+  // Tables
+  table th {
+    background: #161b22;
+    border-color: #30363d;
+    color: #f0f6fc;
+  }
+
+  table td {
+    border-color: #21262d;
+  }
+
+  // Nav logo swap
+  .nav-logo-dark  { display: block; }
+  .nav-logo-light { display: none; }
+
+  // Dark mode toggle icon swap
+  .dark-mode-toggle {
+    .icon-sun  { display: block; }
+    .icon-moon { display: none; }
   }
 }
