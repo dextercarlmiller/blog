@@ -1,17 +1,19 @@
 <header class="site-header">
-  <div class="container">
-    <div class="header-inner">
-      <a href="https://dextermiller.com" class="site-logo" target="_blank" rel="noopener">
-        <img src="https://dextermiller.com/images/logo-light.png" alt="Dexter Miller" class="logo-img"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <span class="logo-mark" style="display:none;">DM</span>
-        <span class="logo-name">Dexter Miller</span>
-      </a>
-      <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Blog</a>
-        <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url == '/about/' or page.url == '/about.html' %}active{% endif %}">About</a>
-        <a href="https://dextermiller.com" class="nav-link nav-link-external" target="_blank" rel="noopener">Website&nbsp;&rarr;</a>
-      </nav>
-    </div>
+  <div class="header-inner">
+    <a href="https://dextermiller.com" class="site-logo" target="_blank" rel="noopener">
+      <img
+        src="https://dextermiller.com/images/logo-light.png"
+        alt="Dexter Miller"
+        class="logo-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <span class="logo-mark">DM</span>
+      <span class="logo-name">Dexter Miller</span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Blog</a>
+      <a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url == '/about/' or page.url == '/about.html' %}active{% endif %}">About</a>
+      <a href="https://dextermiller.com" class="nav-link nav-link-external" target="_blank" rel="noopener">Website &rarr;</a>
+    </nav>
   </div>
 </header>

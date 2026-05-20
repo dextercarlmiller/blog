@@ -1,29 +1,49 @@
-// Colors - dark theme (#0d1117 base)
-$color-bg:            #0d1117;
-$color-surface:       #161b22;
-$color-surface-hover: #1c2128;
-$color-text:          #e6edf3;
-$color-text-body:     #c9d1d9;
-$color-text-muted:    #8b949e;
-$color-text-faint:    #6e7681;
-$color-accent:        #58a6ff;
-$color-accent-hover:  #79c0ff;
-$color-accent-light:  rgba(88, 166, 255, 0.12);
-$color-border:        #30363d;
-$color-border-light:  #21262d;
-$color-tag-bg:        rgba(56, 139, 253, 0.15);
-$color-tag-text:      #79c0ff;
+// =============================================================================
+// Design tokens extracted from dextermiller.com CSS
+// =============================================================================
 
-// Typography
-$font-heading:  'Space Grotesk', system-ui, sans-serif;
+// --- Core palette (from :root on dextermiller.com) ---
+$color-navy:          #0f172a;
+$color-navy-mid:      #1e3a5f;
+$color-blue:          #2563eb;
+$color-blue-light:    #3b82f6;
+$color-blue-pale:     #bfdbfe;
+$color-gold:          #d97706;
+
+// --- Page colors (light theme default, matching --bg / --text / --border) ---
+$color-bg:            #ffffff;
+$color-bg-alt:        #f8fafc;
+$color-bg-card:       #ffffff;
+$color-text:          #1e293b;
+$color-text-muted:    #64748b;
+$color-border:        #e2e8f0;
+
+// Convenience aliases used throughout layout
+$color-accent:        $color-blue;
+$color-accent-hover:  #1d4ed8;
+$color-accent-light:  #eff6ff;
+$color-tag-bg:        #eff6ff;
+$color-tag-text:      $color-blue;
+
+// --- Typography (matching --font-head / --font-body on dextermiller.com) ---
+$font-heading:  'Poppins', system-ui, sans-serif;
 $font-body:     'Inter', system-ui, -apple-system, sans-serif;
 $font-mono:     'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
-// Sizes
+// --- Layout ---
 $container-width: 720px;
 $header-height:   64px;
 
-// Spacing
+// --- Border radius (from --radius: 12px) ---
+$radius:    12px;
+$radius-sm: 8px;
+$radius-xs: 6px;
+
+// --- Shadows (from --shadow / --shadow-md) ---
+$shadow:    0 2px 12px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 6px 28px rgba(0, 0, 0, 0.10);
+
+// --- Spacing ---
 $space-xs:  4px;
 $space-sm:  8px;
 $space-md:  16px;
@@ -32,9 +52,9 @@ $space-xl:  40px;
 $space-2xl: 64px;
 $space-3xl: 96px;
 
-// Breakpoints
+// --- Breakpoints ---
 $bp-sm: 480px;
 $bp-md: 768px;
 
-// Transitions
-$transition: 150ms ease;
+// --- Transitions (from --transition: 0.2s ease) ---
+$transition: 0.2s ease;
