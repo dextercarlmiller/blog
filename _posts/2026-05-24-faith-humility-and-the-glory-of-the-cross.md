@@ -3,7 +3,7 @@ layout: post
 title: "Faith, Humility, and the Glory of the Cross"
 subtitle: "King's Fire Church marks Memorial Day weekend with a call to surrender"
 date: 2026-05-24
-tags: [faith, sermon, church, humility, gospel, communion, kingsfire]
+tags: [faith, sermon, church]
 ---
 
 On a Memorial Day weekend Sunday, King's Fire Church gathered for worship and a communion service centered on one of Christianity's most countercultural claims: that true life is found not through self-reliance, but through surrender.
